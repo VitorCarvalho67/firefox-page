@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home</title>
+</head>
+<body>
+	<video style="width:100vw; height:100vh;  object-fit: cover; position: fixed;" autoplay loop>
+  	<source style="width:100%; height:100%; object-fit: cover;" src="a23.mp4" type="video/mp4">
+  	Seu navegador não suporta a tag de vídeo.
+	</video>
+	
+	<div style="width:100vw; height:100vh; position: fixed; display: flex; justify-content: center; align-items: center; z-index: 1;">
+		
+		<input type="text" placeholder="Startpage search" id="search2" 
+		name="search" onkeydown="if(event.keyCode == 13) {searchStartpage2();}" 
+		class="text">
+		<button style="width: 50px; height: 50px; border-radius: 0 10px 10px 0; border: none; font-size: 20px; cursor: pointer;" onclick="searchStartpage2()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+			<path d="M14.5 13h-.79l-.28-.27a6.47 6.47 0 1 0-.7.7l.27.28v.79l4.25 4.25a1 1 0 0 0 1.41-1.41L14.5 13zm-6 0a4.5 4.5 0 1 1 4.5-4.5A4.5 4.5 0 0 1 8.5 13z" fill="white"/>
+		  </svg></button>
+	</div>
+	<p id="current-time"></p>
+</body>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+
+	.text{
+		width: 50%;
+		height: 50px;
+		border-radius: 10px 0 0 10px;
+		border: none;
+		padding: 10px;
+		font-size: 20px;
+		outline: none;
+		background-color: rgba(28, 28, 28, 0.849);
+		color: #fff;
+	}
+
+	button{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: rgba(28, 28, 28, 0.849);
+		border: #fff 1px 0px 0px 1px solid;
+		color: #fff;
+	}
+
+	svg{
+		margin-top: 3PX;
+	}
+
+	p{
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		z-index: 1;
+		padding: 10px;
+		color: #fff;
+		font-family: Arial, Helvetica, sans-serif;
+		letter-spacing: .2cm;
+		user-select: none;
+		text-shadow: 1px 1px 5px #000;
+	}
+</style>
+<script>
+	function searchStartpage2() {
+    	let query = document.getElementById("search2").value;
+		window.location.href = "https://www.startpage.com/search?q=" + query;
+	}
+
+	setInterval(function() {
+    var now = new Date();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // handle midnight
+    var timeString = "<b>" + hours + ":" + (minutes < 10 ? "0" + minutes : minutes) + " " + ampm + "</b>";
+    document.getElementById("current-time").innerHTML = timeString;
+  }, 1000);
+
+
+</script>
+</html>
+
+
+
